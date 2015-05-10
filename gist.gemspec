@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version       = Gist::VERSION
   s.summary       = 'Just allows you to upload gists'
   s.description   = 'Provides a single function (Gist.gist) that uploads a gist.'
-  s.homepage      = 'https://github.com/defunkt/gist'
+  s.homepage      = 'https://github.com/xuoe/gist'
   s.email         = ['conrad.irwin@gmail.com', 'rkingist@sharpsaw.org']
   s.authors       = ['Conrad Irwin', '☈king']
   s.license       = 'MIT'

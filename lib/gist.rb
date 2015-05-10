@@ -148,6 +148,32 @@ module Gist
     raise e.extend Error
   end
 
+  # Delete an existing gist.
+  def delete(options)
+    id = options[:delete].to_s.split("/").last
+    access_token = (options[:access_token] || auth_token())
+
+    url = "#{base_path}/gists"
+    url << "/" << CGI.escape(id) if id.to_s != ''
+    url << "?access_token=" << CGI.escape(access_token) if access_token.to_s != ''
+
+    request = Net::HTTP::Delete.new(url)
+
+    begin
+      response = http(api_url, request)
+      return if response.code == '204'
+
+      if response.code == '404'
+        raise "gist #{id} does not exist"
+      else
+        raise "Got #{response.class} from gist: #{response.body}"
+      end
+    end
+
+  rescue => e
+    raise e.extend Error
+  end
+
   # List all gists(private also) for authenticated user
   # otherwise list public gists for given username (optional argument)
   #

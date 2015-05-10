@@ -1,6 +1,16 @@
 gist(1) -- upload code to https://gist.github.com
 =================================================
 
+#### Note
+
+This gem is a fork of [defunkt/gist](https://github.com/defunkt/gist) that 
+includes support for deleting existing gists by use of an additional 
+command-line flag:
+
+```
+    -D, --delete [ URL | ID ]        Delete an existing gist.
+```
+
 ## Synopsis
 
 The gist gem provides a `gist` command that you can use from your terminal to

@@ -83,6 +83,10 @@ Usage: #{executable_name} [-o|-c|-e] [-p] [-s] [-R] [-d DESC] [-a] [-u URL] [-P]
     options[:update] = update
   end
 
+  opts.on("-D", "--delete [ URL | ID ]", "Delete an existing gist.") do |delete|
+    options[:delete] = delete
+  end
+
   opts.on("-a", "--anonymous", "Create an anonymous gist.") do
     options[:anonymous] = true
   end
@@ -154,6 +158,8 @@ begin
 
   if options[:paste]
     puts Gist.gist(Gist.paste, options)
+  elsif options[:delete]
+    Gist.delete(options)
   else
     to_read = ARGV.empty? ? ['-'] : ARGV
     files = {}
